@@ -1,10 +1,24 @@
 var app = new Vue({
     el : '#app',
     data : {
-        lista:[
-            {nombre: 'Juan Perez', promedio:'10', estado:false},
-            {nombre: 'Jeannina Perez', promedio:'17', estado:true},
-            {nombre: 'Paco Perez', promedio:'20', estado:true}
-        ],
+        lista:[],
+        nombre:'',
+        promedio:'',
+
+    },
+    methods : {
+        agregarNota: function(){
+            estadoA = false;
+            if(this.promedio >= 12.5){
+                estadoA = true;
+            }
+            if(this.nombre != "" && this.promedio != ""){
+                this.lista.push({nombre:this.nombre, promedio:this.promedio, estado:estadoA});
+                this.nombre = "";
+                this.promedio = "";
+            }else{
+                alert('Inserge nombre y promedio del estudiante');
+            }
+        }
     }
 })
